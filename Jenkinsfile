@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh protractor conf.js
+                sh 'protractor conf.js'
             }
         }
     }
