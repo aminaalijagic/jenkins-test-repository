@@ -1,17 +1,19 @@
 //Jenkinsfile (Declarative Pipeline)
-pipeline {
-    agent { docker { image 'node:6.3' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'protractor conf.js'
+
+    pipeline {
+        agent { docker { image 'node:6.3' } }
+        stages {
+            stage('build') {
+                steps {
+                    sh 'protractor conf.js'
+                }
+            }
+        }
+    
+        post {
+            always {
+                junit 'build/reports/**/*.xml'
             }
         }
     }
-    
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
-    }
-}
+
