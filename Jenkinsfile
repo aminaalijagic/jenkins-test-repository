@@ -1,20 +1,15 @@
 //Jenkinsfile (Declarative Pipeline)
 node{
     pipeline {
-        //agent { docker { image 'node:6.3' } }
+        agent any
         stages {
             stage('build') {
                 steps {
                     sh 'protractor conf.js'
+                    sh 'make check || true' (1)
+                    junit '**/target/*.xml' (2)
                 }
             }
         }
-    
-        post {
-            always {
-                junit 'build/reports/**/*.xml'
-            }
-        }
     }
-
 }
