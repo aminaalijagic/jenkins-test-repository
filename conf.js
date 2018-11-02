@@ -12,4 +12,7 @@ exports.config = {
       var jasmineReporters = require('/Users/amina/node_modules/jasmine-reporters');
       jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter(null, true, true));
     },
+    scripts: {
+      test: "protractor conf.js",
+    },
   }
